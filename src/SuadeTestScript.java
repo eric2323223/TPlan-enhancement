@@ -1,6 +1,8 @@
 import java.awt.Point;
+import java.awt.Rectangle;
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -12,10 +14,15 @@ import com.sybase.robot.scripting.commands.impl.ImageUtil;
 public abstract class SuadeTestScript extends SybaseJavaTestScript {
 	private final static String REPORT_FILE = "report.html";
 	private int status = 0;
-	private int result = -1;
+	private int result = 0; //only set result when error occurrs
 	private int defaultDelayMS = 1000;
 	
 	private String password;
+	private String comparisonMethod;
+	private String waitFor;
+	private float matchRate;
+	private String matchArea;
+	private Rectangle windowRectangle = null;
 	
 	public void setPassword(String pass){
 		password = pass;
@@ -55,6 +62,7 @@ public abstract class SuadeTestScript extends SybaseJavaTestScript {
 //		setupReport();
 		status = 1;
 		try{
+			getMetaData();
 			doTest();
 		}catch(ActionFailedException e){
 			System.out.println(e.getMessage());
@@ -66,8 +74,7 @@ public abstract class SuadeTestScript extends SybaseJavaTestScript {
 	
 	public boolean isExist(String imageFile){
 		try {
-			waitForMatch(new File[] { new File(getResourcePath(imageFile)) }, -1F,
-					"3s", "search", null, null, "10s", null);
+			waitForMatch(getResourceFiles(imageFile), this.matchRate, "1s", this.comparisonMethod, null, this.windowRectangle, this.waitFor, null);
 			if(exitCode()==0){
 				return true;
 			}else{
@@ -77,20 +84,7 @@ public abstract class SuadeTestScript extends SybaseJavaTestScript {
 			return false;
 		}
 	}
-	
-	public boolean isExistEdge(String imageFile){
-		try {
-			waitForMatchEdge(getResourceFiles(imageFile), 90F);
-			if(exitCode()==0){
-				return true;
-			}else{
-				return false;
-			}
-		} catch (IOException e) {
-			return false;
-		}
-	}
-	
+
 	protected TestResult getResult(){
 //		if(status == 0){
 //			throw new RuntimeException("Script is not started yet!");
@@ -133,7 +127,7 @@ public abstract class SuadeTestScript extends SybaseJavaTestScript {
 
 	public void waitForDispear(String fileName) throws IOException, InterruptedException{
 		while(true){
-			waitForMatch(new File[] { new File(getResourcePath(fileName)) }, -1F,"3s", "search", null, null, "10s", null);
+			waitForMatch(getResourceFiles(fileName), this.matchRate,"1s", this.comparisonMethod, null, this.windowRectangle, this.waitFor, null);
 			if(exitCode()!=0){
 				break;
 			}else{
@@ -145,10 +139,9 @@ public abstract class SuadeTestScript extends SybaseJavaTestScript {
 	public abstract void doTest() throws Exception;
 
 	public void clickOn(String imageFileName) throws IOException, ActionFailedException{
-//		String path = getResourcePath(imageFileName);
 		File[] files = getResourceFiles(imageFileName);
-		waitForMatchEdge(files, 90F);
-//		System.out.println(exitCode());
+		waitForMatch(files, this.matchRate, "1s", this.comparisonMethod, null, this.windowRectangle, this.waitFor, null);
+		System.out.println(this.windowRectangle);
 		int width = ImageUtil.getImageWidth(files[0])/2;
 		int height = ImageUtil.getImageHeight(files[0])/2;
 		if (getContext().getExitCode() == 0) {
@@ -156,7 +149,12 @@ public abstract class SuadeTestScript extends SybaseJavaTestScript {
 //			Point point = new Point(getVariableAsInt("_SEARCH_X") + ImageUtil.getImageWidth(new File(getResourcePath(imageFileName)))/2,
 //					getVariableAsInt("_SEARCH_Y") + ImageUtil.getImageHeight(new File(getResourcePath(imageFileName)))/2);
 //			System.out.println(point.toString());
-			mouseClick(point);
+			if(this.windowRectangle!=null){
+				Point p = new Point(point.x+this.windowRectangle.x, point.y+this.windowRectangle.y);
+				mouseClick(p);
+			}else{
+				mouseClick(point);
+			}
 		} 
 		result = exitCode();
 		if(result>0){
@@ -165,40 +163,11 @@ public abstract class SuadeTestScript extends SybaseJavaTestScript {
 //		System.out.println("clickOn "+imageFileName+": "+result);
 	}
 	
-	public void waitForMatch(String fileName, float accuracyRate)throws IOException{
-		waitForMatch(getResourceFiles(fileName), accuracyRate,"3s", "search", null, null, "10s" , null);
-//		waitForMatch(new File[] { new File(getResourcePath(fileName)) }, accuracyRate,"3s", "search", null, null, "10s" , null);
-	}
-	
 	public void waitForMatch(String fileName, int timeout) throws IOException, ActionFailedException{
 		long start = new Date().getTime();
 		long end = 0;
 		do{
-			String time = new Integer(timeout).toString()+"s";
-			waitForMatch(getResourceFiles(fileName), -1F,"3s", "search", null, null, time , null);
-//			waitForMatch(new File[] { new File(getResourcePath(fileName)) }, -1F,"3s", "search", null, null, time , null);
-			if(exitCode()!=0){
-				try {
-					Thread.sleep(defaultDelayMS);
-					System.out.println("~~~~~~");
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
-			}else{
-				break;
-			}
-		}while(end - start < timeout*defaultDelayMS);
-		result = exitCode();
-		if(result>0){
-			throw new ActionFailedException("Failed to match "+fileName);
-		}
-	}
-	
-	public void waitForMatchEdge(String fileName, int timeout) throws IOException, ActionFailedException{
-		long start = new Date().getTime();
-		long end = 0;
-		do{
-			waitForMatchEdge(getResourceFiles(fileName), 90F);
+			waitForMatch(getResourceFiles(fileName), this.matchRate, "1s", this.comparisonMethod, null, this.windowRectangle, this.waitFor, null);
 			if(exitCode()!=0){
 				try {
 					Thread.sleep(defaultDelayMS);
@@ -300,17 +269,47 @@ public abstract class SuadeTestScript extends SybaseJavaTestScript {
 		return baseDir()+"/tplan/common";
 	}
 
-	public void verifyLoginName(String fileName) throws Exception {
-		waitForMatch(new File[] { new File(getResourcePath(fileName)) }, -1F, "3s",
-				"search", null, null, "10s", null);
-		result = exitCode();
-		System.out.println("verifyLoginName: "+result);
-	}
+//	public void verifyLoginName(String fileName) throws Exception {
+//		waitForMatch(new File[] { new File(getResourcePath(fileName)) }, 95F, "3s",
+//				"search", null, null, "10s", null);
+//		result = exitCode();
+//		System.out.println("verifyLoginName: "+result);
+//	}
 	
 //	public abstract void homeScreen() throws IOException;
 
 	public File reportFile() {
 		return new File(getResourceFolder()+"/"+REPORT_FILE);
+	}
+	
+	private void getMetaData() throws ActionFailedException{
+		try {
+			Method m = getClass().getMethod("doTest");
+			TplanTest anno = m.getAnnotation(TplanTest.class);
+			this.comparisonMethod = anno.comparisonMethod();
+			this.waitFor = anno.waitFor();
+			this.matchRate = anno.matchRate();
+			this.matchArea = anno.matchArea();
+			getWindowRectangle(this.matchArea);
+		} catch (Exception e) {
+			throw new ActionFailedException("Failed to retrieve metadata of doTest method");
+		} 
+	}
+
+	private void getWindowRectangle(String str) {
+		if(str.equalsIgnoreCase("desktop")){
+			this.windowRectangle = null;
+		}else if(str.toLowerCase().startsWith("rectangle:")){
+			String rectangleStr = str.split(":")[1].trim();
+			String parts[] = rectangleStr.split(",");
+			int x = new Integer(parts[0]).intValue();
+			int y = new Integer(parts[1]).intValue();
+			int width = new Integer(parts[2]).intValue();
+			int height = new Integer(parts[3]).intValue();
+			this.windowRectangle = new Rectangle(x, y, width, height);
+		}else{
+//				this.windowRectangle = WindowSpy.getWindowRectangle(str);
+		}
 	}
 	
 }

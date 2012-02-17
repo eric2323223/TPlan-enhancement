@@ -13,6 +13,14 @@ public class Main extends SuadeTestScript{
 	}
 
 	@Override
+	@TplanTest(
+			comparisonMethod = "searchbinary", 
+			waitFor = "5s", 
+			matchRate = 95f,
+//			matchArea="desktop")
+//			matchArea="5554:avd22")
+			matchArea="Rectangle:0,0,1,1"
+			)
 	public void doTest() throws Exception {
 //		connect("java://localhost");
 		connect("10.35.180.238","test");
