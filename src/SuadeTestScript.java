@@ -201,19 +201,27 @@ public abstract class SuadeTestScript extends SybaseJavaTestScript {
 	
 	public File[] getResourceFiles(String name) {
 //		String fileName = name+".png";
-		if(hasFileInDir(getResourceFolder(), name)){
-			return getAllFiles(getResourceFolder() , name);
-		}else if(hasFileInDir(getFeatureCommonResourcePath(getScriptName()),name)){
-			return getAllFiles(getFeatureCommonResourcePath(getScriptName()),name);
-		}else if(hasFileInDir(getWorkflowCommonResourcePath(),name)){
-			return getAllFiles(getWorkflowCommonResourcePath(), name);
-		}else if(hasFileInDir(getGlobalCommonResourcePath(), name)){
-			return getAllFiles(getGlobalCommonResourcePath(), name);
+		if(isAnManagedResourceName(name)){
+			if(hasFileInDir(getResourceFolder(), name)){
+				return getAllFiles(getResourceFolder() , name);
+			}else if(hasFileInDir(getFeatureCommonResourcePath(getScriptName()),name)){
+				return getAllFiles(getFeatureCommonResourcePath(getScriptName()),name);
+			}else if(hasFileInDir(getWorkflowCommonResourcePath(),name)){
+				return getAllFiles(getWorkflowCommonResourcePath(), name);
+			}else if(hasFileInDir(getGlobalCommonResourcePath(), name)){
+				return getAllFiles(getGlobalCommonResourcePath(), name);
+			}else{
+				throw new RuntimeException("Cannot find resource file: "+name);
+			}
 		}else{
-			throw new RuntimeException("Cannot find resource file: "+name);
+			return new File[]{new File(name)};
 		}
 	}
 	
+	private boolean isAnManagedResourceName(String name) {
+		return !name.toLowerCase().endsWith(".png");
+	}
+
 	private boolean hasFileInDir(String folder, String fileName){
 		File dir = new File(folder);
 		if(dir.exists()){

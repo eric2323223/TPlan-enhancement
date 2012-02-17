@@ -23,7 +23,7 @@ public class SearchBinaryImageComparisonModule extends SearchImageComparisonModu
 	List<int[]> tmm;
 	int[] mm;
 	Rectangle mmArea;
-	boolean debugMode = false;
+	boolean debugMode = true;
 
 	public void setDebugMode(boolean b){
 		this.debugMode = b;
