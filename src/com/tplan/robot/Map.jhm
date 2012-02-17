@@ -1,0 +1,168 @@
+<?xml version='1.0' encoding='ISO-8859-1' ?>
+<!DOCTYPE map
+  PUBLIC "-//Sun Microsystems Inc.//DTD JavaHelp Map Version 1.0//EN"
+         "http://java.sun.com/products/javahelp/map_1_0.dtd">
+
+<map version="1.0">
+    <mapID target="doc.collection" url="index.html" />
+    <mapID target="gui.overview" url="gui/index.html" />
+
+    <mapID target="rn" url="install/install.html" />
+    <mapID target="rn.client" url="install/install.html#sysreqs" />
+    <mapID target="rn.server" url="install/install.html#serversysreq" />
+    <mapID target="rn.vnc" url="install/install.html#vnc" />
+    <mapID target="rn.java" url="install/install.html#javaclient" />
+    <mapID target="rn.upgrade" url="install/install.html#upgrade" />
+    <mapID target="rn.uninstall" url="install/install.html#uninstallation" />
+    <mapID target="rn.install" url="install/install.html#installation" />
+    <mapID target="rn.startup" url="install/install.html#startup" />
+    <mapID target="rn.troubleshooting" url="install/install.html#troubleshooting" />
+
+    <mapID target="cli" url="cli/clioptions.html" />
+    <mapID target="cli.startup" url="cli/clioptions.html#startup_cli" />
+    <mapID target="cli.comparison" url="cli/clioptions.html#comparison" />
+
+    <mapID target="gui.menu" url="gui/menu.html" />
+    <mapID target="gui.menu_new" url="gui/menu.html#new" />
+    <mapID target="gui.menu_open" url="gui/menu.html#open" />
+    <mapID target="gui.menu_reopen" url="gui/menu.html#reopen" />
+    <mapID target="gui.menu_save" url="gui/menu.html#save" />
+    <mapID target="gui.menu_saveas" url="gui/menu.html#saveas" />
+    <mapID target="gui.menu_saveall" url="gui/menu.html#saveall" />
+    <mapID target="gui.menu_close" url="gui/menu.html#close" />
+    <mapID target="gui.menu_closeall" url="gui/menu.html#closeall" />
+    <mapID target="gui.menu_connect" url="gui/menu.html#connect" />
+    <mapID target="gui.menu_reconnect" url="gui/menu.html#reconnect" />
+    <mapID target="gui.menu_disconnect" url="gui/menu.html#disconnect" />
+    <mapID target="gui.menu_exit" url="gui/menu.html#exit" />
+    <mapID target="gui.menu_undo" url="gui/menu.html#undo" />
+    <mapID target="gui.menu_redo" url="gui/menu.html#redo" />
+    <mapID target="gui.menu_cut-to-clipboard" url="gui/menu.html#cut-to-clipboard" />
+    <mapID target="gui.menu_copy-to-clipboard" url="gui/menu.html#copy-to-clipboard" />
+    <mapID target="gui.menu_paste-from-clipboard" url="gui/menu.html#paste-from-clipboard" />
+    <mapID target="gui.menu_select-all" url="gui/menu.html#select-all" />
+    <mapID target="gui.menu_preferences" url="gui/menu.html#preferences" />
+    <mapID target="gui.menu_replay" url="gui/menu.html#replay" />
+
+    <mapID target="gui.menu_record" url="gui/recording.html" />
+    <mapID target="gui.menu_screenshot" url="gui/screenshot.html" />
+    <mapID target="gui.menu_waitfor" url="gui/waitfor.html" />
+    <mapID target="gui.menu_compareto" url="gui/compareto.html" />
+
+    <mapID target="gui.menu_replayselection" url="gui/menu.html#replayselection" />
+    <mapID target="gui.menu_pause" url="gui/menu.html#pause" />
+    <mapID target="gui.menu_followexectrace" url="gui/menu.html#followexectrace" />
+    <mapID target="gui.menu_readonly" url="gui/menu.html#readonly" />
+    <mapID target="gui.menu_stop" url="gui/menu.html#stop" />
+    <mapID target="gui.menu_variablebrowser" url="gui/menu.html#variablebrowser" />
+    <mapID target="gui.menu_keybrowser" url="gui/menu.html#keybrowser" />
+    <mapID target="gui.menu_helpabout" url="gui/menu.html#helpabout" />
+    <mapID target="gui.menu_helptopics" url="gui/menu.html#helptopics" />
+    <mapID target="gui.menu_contextualhelp" url="gui/menu.html#contextualhelp" />
+    <mapID target="gui.menu_nooutput" url="gui/menu.html#nooutput" />
+    <mapID target="gui.menu_step" url="gui/menu.html#step" />
+
+    <mapID target="gui.editor" url="gui/editor.html" />
+    <mapID target="gui.editor_overview" url="gui/editor.html#overview" />
+    <mapID target="gui.editor_edit" url="gui/editor.html#edit" />
+    <mapID target="gui.editor_validation" url="gui/editor.html#validation" />
+    <mapID target="gui.editor_breakpoints" url="gui/editor.html#breakpoints" />
+    <mapID target="gui.editor_custompopups" url="gui/editor.html#custompopups" />
+    <mapID target="gui.editor_exectrace" url="gui/editor.html#exectrace" />
+    <mapID target="gui.editor_runselection" url="gui/editor.html#runselection" />
+    <mapID target="gui.editor_highlight" url="gui/editor.html#highlight" />
+    <mapID target="gui.editor_step" url="gui/editor.html#step" />
+    <mapID target="gui.editor_wizard" url="gui/editor.html#wizard" />
+
+    <mapID target="gui.viewer" url="gui/viewer.html" />
+    <mapID target="gui.viewer_overview" url="gui/viewer.html#overview" />
+    <mapID target="gui.viewer_connect" url="gui/viewer.html#connect" />
+    <mapID target="gui.viewer_login" url="gui/login.html" />
+    <mapID target="gui.viewer_disconnect" url="gui/viewer.html#disconnect" />
+    <mapID target="gui.viewer_encoding" url="gui/viewer.html#encoding" />
+    <mapID target="gui.viewer_refresh" url="gui/viewer.html#refresh" />
+
+    <mapID target="gui.clioptions" url="cli/clioptions.html" />
+    <mapID target="gui.clioptions_examples" url="cli/clioptions.html#examples" />
+
+    <mapID target="gui.keybrowser" url="gui/keybrowser.html" />
+
+    <mapID target="gui.varbrowser" url="gui/varbrowser.html" />
+
+    <mapID target="gui.preferences" url="gui/preferences.html" />
+    <mapID target="gui.preferences_files" url="gui/preferences.html#files" />
+    <mapID target="gui.defaultconfig" url="gui/defaultconfig.html" />
+
+    <mapID target="gui.compareto" url="gui/compareto.html" />
+    <mapID target="gui.screenshot" url="gui/screenshot.html" />
+    <mapID target="gui.takescreenshot" url="gui/takescreenshot.html" />
+
+    <mapID target="gui.recording" url="gui/recording.html" />
+
+    <mapID target="gui.comparison" url="gui/comparison.html" />
+    <mapID target="gui.comparison_troubleshooting" url="gui/comparison.html#troubleshooting" />
+
+    <mapID target="gui.toolpanel" url="gui/toolpanel.html" />
+    <mapID target="gui.toolpanel_settings" url="gui/toolpanel.html#settings" />
+    <mapID target="gui.toolpanel_events" url="gui/toolpanel.html#events" />
+    <mapID target="gui.toolpanel_keys" url="gui/toolpanel.html#keys" />
+
+    <mapID target="gui.waitfor" url="gui/waitfor.html" />
+    <mapID target="gui.waitfor_update" url="gui/waitfor.html#update" />
+    <mapID target="gui.waitfor_bell" url="gui/waitfor.html#bell" />
+    <mapID target="gui.waitfor_match" url="gui/waitfor.html#match" />
+
+    <mapID target="gui.statusbar" url="gui/statusbar.html" />
+    <mapID target="gui.statusbar_updatecoords" url="gui/statusbar.html#updatecoords" />
+    <mapID target="gui.statusbar_mousecoords" url="gui/statusbar.html#mousecoords" />
+
+    <mapID target="gui.plugins" url="gui/plugins.html" />
+    
+    <mapID target="scripting.commref" url="scripting/commref.html" />
+
+    <mapID target="scripting.commref_intro" url="scripting/commref.html#intro" />
+    <mapID target="scripting.commref_purpose" url="scripting/commref.html#purpose" />
+    <mapID target="scripting.commref_overview" url="scripting/commref.html#overview" />
+    <mapID target="scripting.commref_language_syntax" url="scripting/commref.html#language_syntax" />
+    <mapID target="scripting.commref_langstructure" url="scripting/commref.html#lang_structure" />
+    <mapID target="scripting.commref_time" url="scripting/commref.html#timevalues" />
+    <mapID target="scripting.commref_proc" url="scripting/commref.html#procedures" />
+    <mapID target="scripting.commref_numeric" url="scripting/commref.html#numeric" />
+    <mapID target="scripting.commref_boolean" url="scripting/commref.html#boolean" />
+    <mapID target="scripting.commref_if" url="scripting/commref.html#if" />
+    <mapID target="scripting.commref_for" url="scripting/commref.html#for" />
+    <mapID target="scripting.commref_locvars" url="scripting/commref.html#locvars" />
+    <mapID target="scripting.commref_retvals" url="scripting/commref.html#retval" />
+
+    <mapID target="scripting.commref_command_syntax" url="scripting/commref.html#command_syntax" />
+    <mapID target="scripting.commref_press" url="scripting/commref.html#press" />
+    <mapID target="scripting.commref_type" url="scripting/commref.html#type" />
+    <mapID target="scripting.commref_typeline" url="scripting/commref.html#typeline" />
+    <mapID target="scripting.commref_mouse" url="scripting/commref.html#mouse" />
+    <mapID target="scripting.commref_var" url="scripting/commref.html#var" />
+    <mapID target="scripting.commref_eval" url="scripting/commref.html#eval" />
+    <mapID target="scripting.commref_exit" url="scripting/commref.html#exit" />
+    <mapID target="scripting.commref_wait" url="scripting/commref.html#wait" />
+    <mapID target="scripting.commref_waitfor" url="scripting/commref.html#waitfor" />
+    <mapID target="scripting.commref_run" url="scripting/commref.html#run" />
+    <mapID target="scripting.commref_pause" url="scripting/commref.html#pause" />
+    <mapID target="scripting.commref_warning" url="scripting/commref.html#warning" />
+    <mapID target="scripting.commref_exec" url="scripting/commref.html#exec" />
+    <mapID target="scripting.commref_sendmail" url="scripting/commref.html#sendmail" />
+    <mapID target="scripting.commref_include" url="scripting/commref.html#include" />
+    <mapID target="scripting.commref_screenshot" url="scripting/commref.html#screenshot" />
+    <mapID target="scripting.commref_report" url="scripting/commref.html#report" />
+    <mapID target="scripting.commref_procedure" url="scripting/commref.html#procedures" />
+    <mapID target="scripting.commref_connect" url="scripting/commref.html#connect" />
+    <mapID target="scripting.commref_disconnect" url="scripting/commref.html#disconnect" />
+    <mapID target="scripting.commref_compareto" url="scripting/commref.html#compareto" />
+
+    <mapID target="api" url="api/index.html" />
+    <mapID target="api.build" url="api/docs/build.html" />
+    <mapID target="api.files" url="api/docs/files.html" />
+    <mapID target="api.javatest" url="api/docs/javatestscripts.html" />
+    <mapID target="api.plugin" url="api/docs/plugin.html" />
+    <mapID target="api.l10n" url="api/docs/localize.html" />
+    <mapID target="api.stats" url="api/docs/statistics.html" />
+
+</map>

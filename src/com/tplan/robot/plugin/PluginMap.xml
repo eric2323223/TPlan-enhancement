@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<application>
+	<plugingroup interface="com.tplan.robot.remoteclient.RemoteDesktopClient" name="Remote Desktop Clients" key="plugingroup.clients">
+		<plugin>com.tplan.robot.remoteclient.rfb.RfbClientImpl</plugin>
+		<plugin>com.sybase.robot.remoteclient.java.JavaClientImpl</plugin>
+	</plugingroup>
+	<plugingroup interface="com.tplan.robot.remoteclient.rfb.encoding.Encoding" name="RFB Encodings" key="plugingroup.rfbEncodings">
+        <plugin>com.tplan.robot.remoteclient.rfb.encoding.CoRREEncoding</plugin>
+        <plugin>com.tplan.robot.remoteclient.rfb.encoding.RREEncoding</plugin>
+        <plugin>com.tplan.robot.remoteclient.rfb.encoding.RawEncoding</plugin>
+        <plugin>com.tplan.robot.remoteclient.rfb.encoding.CopyRectEncoding</plugin>
+        <plugin>com.tplan.robot.remoteclient.rfb.encoding.HextileEncoding</plugin>
+        <plugin>com.tplan.robot.remoteclient.rfb.encoding.ZlibEncoding</plugin>
+	</plugingroup>
+    <plugingroup interface="com.tplan.robot.imagecomparison.ImageComparisonModule" name="Image Comparison Modules" key="plugingroup.imgComparison">
+        <plugin>com.tplan.robot.imagecomparison.search.SearchImageComparisonModule</plugin>
+        <plugin>com.tplan.robot.imagecomparison.histogram.HistogramComparisonModule</plugin>
+        <plugin>com.sybase.robot.imagecomparison.searchbinary.SearchBinaryImageComparisonModule</plugin>
+        <plugin>com.sybase.robot.imagecomparison.searchgrey.SearchGreyImageComparisonModule</plugin>
+    </plugingroup>
+    <plugingroup interface="com.tplan.robot.scripting.commands.CommandHandler" name="Script Commands" key="plugingroup.scriptCommands">
+        <plugin>com.tplan.robot.scripting.commands.impl.CompareToCommand</plugin>
+        <plugin>com.tplan.robot.scripting.commands.impl.ConnectCommand</plugin>
+        <plugin>com.tplan.robot.scripting.commands.impl.DisconnectCommand</plugin>
+        <plugin>com.tplan.robot.scripting.commands.impl.EvalCommand</plugin>
+        <plugin>com.tplan.robot.scripting.commands.impl.ExecCommand</plugin>
+        <plugin>com.tplan.robot.scripting.commands.impl.ExitCommand</plugin>
+        <plugin>com.tplan.robot.scripting.commands.impl.IncludeCommand</plugin>
+        <plugin>com.tplan.robot.scripting.commands.impl.MouseCommand</plugin>
+        <plugin>com.tplan.robot.scripting.commands.impl.PauseCommand</plugin>
+        <plugin>com.tplan.robot.scripting.commands.impl.PressCommand</plugin>
+        <plugin>com.tplan.robot.scripting.commands.impl.ReportCommand</plugin>
+        <plugin>com.tplan.robot.scripting.commands.impl.RunCommand</plugin>
+        <plugin>com.tplan.robot.scripting.commands.impl.ScreenshotCommand</plugin>
+        <plugin>com.tplan.robot.scripting.commands.impl.SendMailCommand</plugin>
+        <plugin>com.tplan.robot.scripting.commands.impl.TypeCommand</plugin>
+        <plugin>com.tplan.robot.scripting.commands.impl.TypeLineCommand</plugin>
+        <plugin>com.tplan.robot.scripting.commands.impl.VariableCommand</plugin>
+        <plugin>com.tplan.robot.scripting.commands.impl.WaitCommand</plugin>
+        <plugin>com.tplan.robot.scripting.commands.impl.WaitforCommand</plugin>
+        <plugin>com.sybase.robot.scripting.commands.impl.WaitforMatchEdgeCommand</plugin>
+        
+        <plugin>com.tplan.robot.scripting.commands.impl.WarningCommand</plugin>
+    </plugingroup>
+    <plugingroup interface="com.tplan.robot.scripting.report.ReportProvider" name="Report Providers" key="plugingroup.reportProviders">
+        <plugin>com.tplan.robot.scripting.report.DefaultReportProvider</plugin>
+    </plugingroup>
+    <plugingroup interface="com.tplan.robot.scripting.JavaTestScriptConverter" name="Script Converters" key="plugingroup.scriptConverters">
+        <plugin>com.tplan.robot.scripting.DefaultJavaTestScriptConverter</plugin>
+    </plugingroup>
+    <plugingroup interface="com.tplan.robot.scripting.ExecutionListener" name="Execution Listeners" key="plugingroup.executionListeners">
+    </plugingroup>
+    <plugingroup interface="com.tplan.robot.scripting.DynamicVariable" name="Dynamic Variables" key="plugingroup.dynamicVariables">
+    </plugingroup>
+    <plugingroup interface="com.tplan.robot.gui.GuiComponent" name="GUI Components" key="plugingroup.guiComponents">
+    </plugingroup>
+    <plugingroup interface="com.tplan.robot.scripting.interpret.TestScriptInterpret" name="Test Script Interprets" key="plugingroup.interprets">
+        <plugin>com.tplan.robot.scripting.interpret.proprietary.ProprietaryTestScriptInterpret</plugin>
+        <plugin>com.tplan.robot.scripting.interpret.java.JavaTestScriptInterpret</plugin>
+    </plugingroup>
+</application>
