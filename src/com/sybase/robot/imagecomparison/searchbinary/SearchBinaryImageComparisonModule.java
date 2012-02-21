@@ -48,13 +48,14 @@ public class SearchBinaryImageComparisonModule extends SearchImageComparisonModu
     }
     
 	public float compareToBaseImage(Image desktopImage, Rectangle area,	String methodParams, ScriptingContext repository, float passRate){
-		BufferedImage desktopimg;
+		BufferedImage desktopimg = getMatchArea(desktopImage, area);
 		if(debugMode){
-			desktopimg = ImageUtil.edgefy(desktopImage, new File("c:\\desktop.png"), 0);
+			desktopimg = ImageUtil.edgefy(desktopimg, new File("c:\\desktop.png"), 3);
 		}else{
-			desktopimg = ImageUtil.edgefy(desktopImage, null, 0);
+			desktopimg = ImageUtil.edgefy(desktopimg, null, 3);
 		}
-		Point matchPoint = compareToBaseImage(desktopimg, area, passRate);
+		Rectangle fullRect = new Rectangle(0,0,desktopimg.getWidth(), desktopimg.getHeight());
+		Point matchPoint = compareToBaseImage(desktopimg, fullRect, passRate);
 		Map variables = repository.getVariables();
 		if(matchPoint!=null){
 			variables.put("_SEARCH_X", matchPoint.x);
@@ -66,6 +67,15 @@ public class SearchBinaryImageComparisonModule extends SearchImageComparisonModu
 			variables.put("_SEARCH_X", new Integer(-1));
 			variables.put("_SEARCH_Y", new Integer(-1));
 			return -1;
+		}
+	}
+	
+	private BufferedImage getMatchArea(Image img, Rectangle area){
+		if(area!=null){
+			BufferedImage image = ImageUtil.imageToBufferedImage(img);
+			return image.getSubimage(area.x, area.y, area.width, area.height);
+		}else{
+			return ImageUtil.imageToBufferedImage(img);
 		}
 	}
 	

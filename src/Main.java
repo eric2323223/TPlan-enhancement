@@ -15,17 +15,17 @@ public class Main extends SuadeTestScript{
 	@Override
 	@TplanTest(
 			comparisonMethod = "searchbinary", 
-			waitFor = "5s", 
+			waitFor = "1s", 
 			matchRate = 95f,
-//			matchArea="desktop")
+			matchArea="desktop")
 //			matchArea="5554:avd22")
-			matchArea="Rectangle:0,0,1,1"
-			)
+//			matchArea="Rectangle:5,5,150,150")
+//			)
 	public void doTest() throws Exception {
-//		connect("java://localhost");
-		connect("10.35.180.238","test");
+		connect("java://localhost");
+//		connect("10.35.180.238","test");
 		
-		clickOn("c:\\home.png");
+		clickOn("c:\\mycatch.png");
 		
 //		waitForMatch(new File[]{new File("c:\\MyCatch.png")}, "search","3s");
 		waitForMatch(new File[]{new File("c:\\home.png")}, 98f, "searchbinary","3s");
